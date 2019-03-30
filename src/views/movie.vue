@@ -1,9 +1,23 @@
 <template>
+  <div>
 
-  <section class="jumbotron text-center">
-    <img :src="'https://image.tmdb.org/t/p/w1280'+movie.backdropURL" class="fishes" >
-    <img :src="'https://image.tmdb.org/t/p/w500'+movie.posterURL" class="fish">
-  </section>
+    <div class="container-fluid no-padding">
+        <div class="mo-profile">
+            <img align="left" class="mo-image-lg" :src="'https://image.tmdb.org/t/p/w1280'+movie.backdropURL"/>
+            <img align="left" class="mo-image-profile thumbnail" :src="'https://image.tmdb.org/t/p/w500'+movie.posterURL" alt="Profile image example"/>
+            <div class="mo-profile-text">
+                <h1>{{movie.title}}</h1>
+                <p>{{movie.releaseDate | formatDate}}</p>
+            </div>
+        </div>
+    </div>
+    <section class="plot">
+      <div class="container">
+        <p>{{movie.plot}}</p>
+      </div>
+    </section>
+  
+  </div>
 
 </template>
 
@@ -31,18 +45,38 @@ export default {
 </script>
 
 <style scoped>
-.fishes
-{
-  position:absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 1;
+.mo-profile img.mo-image-lg{
+    z-index: 0;
+    width: 100%;  
+    margin-bottom: 10px;
 }
-.fish
-{
-  position:absolute;
-  top: 25px;
-  left: 25px;
-  z-index: 2;
+
+.mo-image-profile {
+    margin: -200px 10px 0px 120px;
+    z-index: 9;
+    width: 15%; 
+}
+
+.plot{
+  padding-top:50px;
+}
+ .no-padding{
+   padding-left: 0px;
+   padding-right: 0px;
+ }
+
+@media (max-width:768px) {
+    
+  .mo-profile-text>h1{
+      font-weight: 700;
+      font-size:16px;
+  }
+
+  .mo-image-profile
+  {
+      margin: -45px 10px 0px 25px;
+      z-index: 9;
+      width: 20%; 
+  }
 }
 </style>

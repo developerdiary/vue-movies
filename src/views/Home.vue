@@ -4,9 +4,9 @@
 
       <div class="row">
 
-          <div class="col-md-4" v-for="(movie, index) in movies" :key="index">
+          <div class="col-md-3" v-for="(movie, index) in movies" :key="index">
             <div class="card mb-4 movies">
-              <img :src="'https://image.tmdb.org/t/p/w500'+movie.posterURL">              
+              <router-link :to="{ name: 'movie', params: { id: movie._id }}"><img :src="'https://image.tmdb.org/t/p/w500'+movie.posterURL"></router-link>           
               <div class="card-body">
                 <p class="card-text">{{movie.title}}</p>
                 <p class="small">{{movie.releaseDate | formatDate}}</p>
