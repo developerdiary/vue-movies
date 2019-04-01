@@ -1,9 +1,10 @@
 <template>
   <div class="album py-5 bg-light">
     <div class="container">
-
+      <div class="center-block">
+          <img v-if="loading" src="@/assets/loader.gif"/>          
+      </div>
       <div class="row">
-
           <div class="col-md-3" v-for="(movie, index) in movies" :key="index">
             <div class="card mb-4 movies">
               <router-link :to="{ name: 'movie', params: { id: movie._id }}"><img :src="'https://image.tmdb.org/t/p/w500'+movie.posterURL"></router-link>           
@@ -18,9 +19,7 @@
               </div>
             </div>
           </div>
-
       </div><!--Row End-->
-
     </div>
   </div>
 
@@ -32,12 +31,13 @@ export default{
   data(){
     return {
       movies: null,
+      loading: true
     }
   },
   methods:{
       getMovies: function(){
         this.$http.get('https://backend-ygzsyibiue.now.sh/api/v1/movies/').then(response => {
-          // get body data
+          this.loading = false;          
           this.movies = response.body;
         });
       }
@@ -59,5 +59,9 @@ export default{
 }
 .movies img{
   width: 100%;
+}
+
+.center-block {
+  text-align: center;
 }
 </style>

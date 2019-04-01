@@ -1,7 +1,6 @@
 <template>
   <div>
-
-    <div class="container-fluid no-padding">
+    <div class="container-fluid no-padding">        
         <div class="mo-profile">
             <div class="mo-profile-banner" :style="{ backgroundImage: 'url(\'https://image.tmdb.org/t/p/w1280' + movie.backdropURL + '\')' }"></div>            
             <div class="container">
